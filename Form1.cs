@@ -21,26 +21,37 @@ namespace MorseCode_ch8_10
         char[] charArray = null;
         string[] morseArray = null;
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            string input = inputTextBox.Text.ToLower();
+            StreamReader inputFile; // To read the file
+            int count = 0;
+            string alphabet;
+
+            inputFile = File.OpenText("alphabet.txt");
+            while (!inputFile.EndOfStream)
+            {
+                // Increment the student counter
+                count++;
+
+                // Read a line from the file
+                alphabet = inputFile.ReadLine();
+            }
+
+            charArray = new char[] { alphabet };
+        }
+
         private void runButton_Click(object sender, EventArgs e)
         {
             try
             {
-                string input = inputTextBox.Text.ToLower();
-                StreamReader inputFile; // To read the file
+                
                 string alphabet;
-                int count = 0;
+               
                 int total;
 
                 // Open the file
-                inputFile = File.OpenText("alphabet.txt");
-                while(!inputFile.EndOfStream)
-                {
-                    // Increment the student counter
-                    count++;
-
-                    // Read a line from the file
-                    alphabet = inputFile.ReadLine();
-                }
+               
 
                 foreach (char myChar in input)
                 {
@@ -72,5 +83,6 @@ namespace MorseCode_ch8_10
             // Close the app
             this.Close();
         }
+        
     }
 }
